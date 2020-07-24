@@ -1,0 +1,64 @@
+/* For 480 Resolution */  
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)  { 
+    .sv-login-modal {
+        position: absolute;
+        top: 8%;
+        left: 60%;
+        width: 22%;
+        border: 1px solid black;
+        padding: 30px 20px 25px;
+        border-radius: 15px;
+        background-color: white;
+    }
+}  
+
+@media (max-width:479px) {
+    .sv-login-modal {
+        display: none;
+    }
+}
+
+@media (min-width:480px) and (max-width:991px)  { 
+    .sv-login-modal {
+        display: none;
+    }
+}
+
+@media (max-width:993px) {
+    .sv-login-modal {
+        top: 10%;
+        .fa-facebook {
+            margin-left: 18%; 
+        }
+        .google-icon{
+            margin-left: 20%;
+        }
+    }
+
+    .bcg-image img {
+        max-height: 690px;
+    }
+}
+
+@media (min-width:1919px){
+    .bcg-image img {
+        max-height: 906px;
+    }
+
+    .sv-login-modal{
+        width: 15%;
+        left: 75%;
+    }
+}
+
+@media only screen 
+  and (min-width: 992px) 
+  and (max-height: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .sv-login-modal {
+        top: 10%!important;
+        .fa-facebook {
+            margin-left: 20%; 
+          }
+    }
+}

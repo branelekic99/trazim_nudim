@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,KAAK;EACjB,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;EACZ,iBAAiB,EAAE,SAAS;EAC5B,OAAO,EAAE,KAAK;CACjB",
+    "sources": [
+        "../sass/body-home-page.scss"
+    ],
+    "names": [],
+    "file": "body-home-page.css"
+}

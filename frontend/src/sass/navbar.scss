@@ -1,0 +1,139 @@
+@import 'media-query.scss';
+@import 'body-home-page.scss';
+@import 'offer.scss';
+
+*, ::after, ::before {
+    margin:0;
+    padding:0;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+    border: 0; 
+
+}
+
+/// PRIMARNE VRIJEDNOSTI 
+$primary-font-size:16px;
+
+/// ZAVRSENE PRIMARNE VRIJEDNOSTI
+
+body{
+    font-size: $primary-font-size;  
+}
+
+.input-group {
+    .form-control {
+        &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
+
+input, .btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-close {
+    display: none;
+}
+
+nav {
+    .navbar-collapse {
+        flex-grow: 1;
+        .navbar-nav {
+            .nav-item{
+                .nav-link {
+                    position: relative;
+        
+                    &:hover, .active {
+                        color: #ff7700;
+                    }
+        
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        background: #ff7700;
+                        width: 90%;
+                        bottom: 0;
+                        z-index: 0; 
+                        transition: 0.6s;
+                    }
+        
+                    &:hover::before,
+                    .active::before { 
+                        height: 2px;
+                        transition: 0.6s;
+                    }
+        
+                    &:hover::after,
+                    .active::after {
+                        height: 2px;right: -5%;
+                        transition: 0.6s;
+                    }
+                }
+            }
+        }
+    }
+}
+ 
+.sv-login-modal{
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    width: 19%;
+    border: 1px solid black;
+    padding: 30px 20px 50px;
+    border-radius: 15px;
+    background-color: white; 
+    a {
+        text-decoration: none;
+    }
+}
+
+.google-icon {
+    font-size: 25px;
+    color: #3b5998;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-left: 100%;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  }
+
+
+.fa-facebook {
+     color: #3b5998;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 50px!important;
+     height: 43px;
+     border-radius: 50%;
+     background-color: #fff;
+     margin-left: 50%;
+     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  }
