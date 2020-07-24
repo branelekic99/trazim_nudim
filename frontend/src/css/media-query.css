@@ -51,7 +51,7 @@
 
 @media only screen and (min-width: 992px) and (max-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
   .sv-login-modal {
-    top: 10%;
+    top: 10% !important;
   }
   .sv-login-modal .fa-facebook {
     margin-left: 20%;

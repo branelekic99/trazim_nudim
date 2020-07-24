@@ -1,5 +1,6 @@
 @import 'media-query.scss';
 @import 'body-home-page.scss';
+@import 'offer.scss';
 
 *, ::after, ::before {
     margin:0;
@@ -22,6 +23,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
     border: 0; 
+
 }
 
 /// PRIMARNE VRIJEDNOSTI 
@@ -69,12 +71,12 @@ nav {
                         background: #ff7700;
                         width: 90%;
                         bottom: 0;
-                        z-index: 0;
+                        z-index: 0; 
                         transition: 0.6s;
                     }
         
                     &:hover::before,
-                    .active::before {
+                    .active::before { 
                         height: 2px;
                         transition: 0.6s;
                     }
@@ -89,3 +91,49 @@ nav {
         }
     }
 }
+ 
+.sv-login-modal{
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    width: 19%;
+    border: 1px solid black;
+    padding: 30px 20px 50px;
+    border-radius: 15px;
+    background-color: white; 
+    a {
+        text-decoration: none;
+    }
+}
+
+.google-icon {
+    font-size: 25px;
+    color: #3b5998;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-left: 100%;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  }
+
+
+.fa-facebook {
+     color: #3b5998;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 50px!important;
+     height: 43px;
+     border-radius: 50%;
+     background-color: #fff;
+     margin-left: 50%;
+     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  }
