@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
-from user_profile.views import FacebookLogin,GoogleLogin
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="home.html")),
@@ -26,7 +26,7 @@ urlpatterns = [
     path('messages/', include('chat.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('accounts/', include('allauth.urls'), name='socialaccount_signup'),
-    path('login/facebook/',FacebookLogin.as_view(),name='facebook_login'),
-    path('login/google/',GoogleLogin.as_view(),name='google_login'),
+    path('api/refresh',TokenRefreshView.as_view()),
+    path('user/',include('user_profile.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

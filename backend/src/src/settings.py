@@ -54,11 +54,9 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework.authentication.TokenAuthentication',
+       'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
    ),
-   'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser'
-   ),
+   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAuthenticated', ),
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -69,6 +67,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 SITE_ID = 1
+REST_USE_JWT = True
+# JWT_AUTH_COOKIE = 'my-app-auth'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,12 +112,18 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
+        # 'NAME':'dev_travel',
+        # 'USER':'dbuser',
+        # 'PASSWORD':'dbuser123',
+        # 'HOST':'10.0.0.13',
+        # 'PORT':'5432',
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'dev_travel',
-        'USER':'dbuser',
-        'PASSWORD':'dbuser123',
-        'HOST':'10.0.0.13',
+        'NAME':'postgres',
+        'USER':'postgres',
+        'HOST':'localhost',
         'PORT':'5432',
+        'PASSWORD':'lampasto123'
     }
 }
 
