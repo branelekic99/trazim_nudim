@@ -33,3 +33,4 @@ class Ocjena(models.Model):
     ocjena = models.DecimalField(max_digits=5,decimal_places=2)
 
 # Create your models here.
+# Milan izmjena
