@@ -112,18 +112,18 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
-        # 'NAME':'dev_travel',
-        # 'USER':'dbuser',
-        # 'PASSWORD':'dbuser123',
-        # 'HOST':'10.0.0.13',
-        # 'PORT':'5432',
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'postgres',
-        'USER':'postgres',
-        'HOST':'localhost',
+        'NAME':'dev_travel',
+        'USER':'dbuser',
+        'PASSWORD':'dbuser123',
+        'HOST':'10.0.0.13',
         'PORT':'5432',
-        'PASSWORD':'lampasto123'
+        #'ENGINE':'django.db.backends.postgresql_psycopg2',
+        #'NAME':'postgres',
+        #'USER':'postgres',
+        #'HOST':'localhost',
+        #'PORT':'5432',
+        #'PASSWORD':'lampasto123'
     }
 }
 
