@@ -4,6 +4,7 @@ import Googleimg from "../img/icons-google.png";
 import Link from "./link.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import Login from './login';
 
 const Home = (props) => {
   return (
