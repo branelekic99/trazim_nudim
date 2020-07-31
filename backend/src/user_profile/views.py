@@ -20,10 +20,13 @@ class ProfileGetView(ListAPIView):
     permission_classes = (permissions.AllowAny,)
     
 class ProfileDetailView(RetrieveAPIView):
-    queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = (permissions.IsAuthenticated,IsUserOwnerOfRecord,)
 
+    def get_object(self):
+        obj = Profile.objects.get(user=self.request.user)
+        return obj
+        
 class ProfileUpdateView(UpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
@@ -35,6 +38,10 @@ class ProfileDeleteView(DestroyAPIView):
     serializer_class = ProfileSerializer
     permission_classes = (permissions.IsAuthenticated,IsUserOwnerOfRecord,)
       
+class GetUserTest(RetrieveAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = ProfileSerializer
 
+    
 
 # Create your views here.

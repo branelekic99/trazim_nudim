@@ -27,6 +27,6 @@ urlpatterns = [
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('accounts/', include('allauth.urls'), name='socialaccount_signup'),
     path('api/refresh',TokenRefreshView.as_view()),
-    path('user/',include('user_profile.urls')),
+    path('',include('user_profile.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
