@@ -37,10 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'src',
-    'chat',
-    'user_profile',
-    'ruta',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
@@ -50,6 +47,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'src',
+    'chat',
+    'user_profile',
+    'ruta',
 ]
 
 REST_FRAMEWORK = {
@@ -71,6 +72,7 @@ REST_USE_JWT = True
 # JWT_AUTH_COOKIE = 'my-app-auth'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,18 +114,18 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
-        # 'NAME':'dev_travel',
-        # 'USER':'dbuser',
-        # 'PASSWORD':'dbuser123',
-        # 'HOST':'10.0.0.13',
-        # 'PORT':'5432',
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'postgres',
-        'USER':'postgres',
-        'HOST':'localhost',
+        'NAME':'dev_travel',
+        'USER':'dbuser',
+        'PASSWORD':'dbuser123',
+        'HOST':'10.0.0.13',
         'PORT':'5432',
-        'PASSWORD':'lampasto123'
+        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
+        # 'NAME':'postgres',
+        # 'USER':'postgres',
+        # 'HOST':'localhost',
+        # 'PORT':'5432',
+        # 'PASSWORD':'lampasto123'
     }
 }
 
@@ -160,6 +162,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
