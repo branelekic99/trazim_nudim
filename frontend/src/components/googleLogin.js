@@ -17,9 +17,11 @@ function GoogleLoginComp(){
                         'profilePic':response.profileObj.imageUrl
                     };
                     dispatch(googleLogin(obj));
+                    
                 }}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
+                redirectUri ="/"
             />
     )
 };

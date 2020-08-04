@@ -1,11 +1,12 @@
 from django.db import models
 from user_profile.models import Profile
+from django.contrib.postgres.fields import ArrayField
 
 class Ruta(models.Model):
     naziv_rute = models.CharField(max_length=30)
-    profil_vozaca = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    #polazak_iz za sad nek ostane prazno dok ne skontamo kako tanco radi google api
-    #dolazuk_u isto
+    profil_vozaca = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    startingLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2,), size=2,)
+    endLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2), size=2,)
     cigarete_u_autu = models.BooleanField(blank=True)
     dozvoljen_prtljak = models.BooleanField(blank=True)
     datum_kreiranja = models.DateField(auto_now_add=True)
