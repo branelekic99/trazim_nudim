@@ -1,7 +1,7 @@
 const initState ={
     token:localStorage.getItem("authenticationToken"),
     refreshToken:localStorage.getItem("authenticationRefreshToken"),
-    isAuthenicated:false,
+    isAuthenticated:false,
     socialMediaAvatar:'',
     user:null,
 } 
@@ -14,14 +14,14 @@ const authReducer = (state=initState,action) =>{
             console.log(action.payload)
             return{
                 ...state,
-                isAuthenicated:true,
+                isAuthenticated:true,
                 socialMediaAvatar:action.payload.avatar
             }
         case "SET_TOKEN":
             localStorage.setItem("authenticationToken",action.payload);
             return{
                 ...state,
-                isAuthenicated:true,
+                isAuthenticated:true,
             }
         case "LOAD_USER":
             return{
