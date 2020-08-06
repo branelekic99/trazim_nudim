@@ -1,7 +1,10 @@
 import React from "react";
+import AutoSerach from './googleAutocompleteSearch';
+
 function Offer(props) {
   return (
     <>
+    <AutoSerach />
       <div className="container mt-4">
         <div className="row m-0 m-auto">
           <div className="col-12 col-md-7 col-lg-7 mr-2 mb-2 sv-test">
