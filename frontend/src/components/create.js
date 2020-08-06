@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DateFnsUtils from '@date-io/date-fns';
+import PlaceSearch from './googleAutocompleteSearch';
+import {useForm,Controller} from 'react-hook-form';
 
 import {
     MuiPickersUtilsProvider,
@@ -11,70 +13,67 @@ import {
     KeyboardDatePicker,
   } from '@material-ui/pickers';
 
-const handleSubmit=(e)=>{
-    e.preventDefault();
-    const obj ={
-        
-    }
-}
-
 function Create(){
 
-    const [startLocation,setStartLocation] = useState("");
-    const [endLocation,setEndlocation] = useState("");
-    const [passengers,setPassengers] = useState("")
-    const [smoking,setSmoking] = useState(false);
-    const [baggage,setBaggage] = useState(false);
-    const [selectedDate,setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
-    const [selectedTime,setSelectedTime] =useState(new Date('2014-08-18T21:11:54'));
+    const {register,handleSubmit,control,errors} = useForm();
+    const [startLocation,setStartLocation] = useState({lat:null,lng:null});
+    const [endLocation,setEndlocation] = useState({lat:null,lng:null});
+
+    const onSubmit = data=>{
+        console.log(data);
+    }
 
     return(
         <div>
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit(onSubmit)}> 
                 <div>  
-                    <TextField label="Polazak" value={startLocation} onChange={e=>setStartLocation(e.target.value)}/>
+                    <PlaceSearch label={"Polazak"} onLocationChange={(location)=>setStartLocation(location)} register={register({required:true})}/>
+                    {errors.Polazak && <p>This is required</p>}
                 </div>
-                <div>
-                    <TextField label="Dolazak" value={endLocation} onChange={e=>setEndlocation(e.target.value)}/>
+                <div>  
+                    <PlaceSearch label={"Dolazak"} onLocationChange={(location)=>setEndlocation(location)} register={register({required:true})}/>
+                    {errors.Dolazak && <p>This is required</p>}
                 </div>
                 <div>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <KeyboardDatePicker
-                    margin="normal"
-                    id="date-picker-dialog"
-                    label="Datum polazka"
-                    format="MM/dd/yyyy"
-                    value={selectedDate}
-                    onChange={date=>setSelectedDate(date)}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change date',
-                }}
-                />
-                <br></br>
-                <KeyboardTimePicker
-                    margin="normal"
-                    id="time-picker"
-                    label="Vrijeme polazka"
-                    value={selectedTime}
-                    onChange={time=>setSelectedTime(time)}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change time',
-                    }}
-            />
-            </MuiPickersUtilsProvider>
+                        <Controller as={KeyboardDatePicker} control={control} margin="normal"
+                            id="date-picker-dialog"
+                            label="Datum polazka"
+                            format="MM/dd/yyyy"
+                            name='date_picker'
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                            rules={{ required: true }}
+                        />
+                         {errors.date_picker && <p>This is required</p>}
+                        <br></br>
+                        <Controller 
+                            as={KeyboardTimePicker} control={control}  margin="normal"
+                            id="time-picker"
+                            label="Vrijeme polazka"
+                            name='time_picker'
+                            KeyboardButtonProps={{
+                                'aria-label': 'change time',
+                            }}
+                            rules={{ required: true }}
+                        />
+                        {errors.time_picker && <p>This is required</p>}
+                    </MuiPickersUtilsProvider>
                 </div>
                 <div>
-                    <TextField label="Broj mjesta" value={passengers} onChange={e=>setPassengers(e.target.value)}/>
+                    <TextField inputRef={register({required:true})} name='seatAveilable' label="Broj mjesta" />
+                    {errors.seatAveilable && <p>This is required</p>}
                 </div>
                 <div>
                 <FormControlLabel 
-                    control={ <Checkbox checked={smoking} onChange={()=>setSmoking(!smoking)}
+                    control={ <Checkbox inputRef={register} name='cigarette' default={false} 
                     />}
                     label="Cigarete"/>
                 </div>
                 <div>
                     <FormControlLabel 
-                        control={ <Checkbox checked={baggage} onChange={()=>setBaggage(!baggage)}
+                        control={ <Checkbox inputRef={register} name='bags' default={false} 
                         />}
                     label="Prtljag"/>
                 </div>
