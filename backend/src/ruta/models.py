@@ -1,5 +1,6 @@
 from django.db import models
 from user_profile.models import Profile
+from django.contrib.postgres.fields import ArrayField
 
 class Route(models.Model):
     route_name = models.CharField(max_length=30)
