@@ -5,8 +5,8 @@ from django.contrib.postgres.fields import ArrayField
 class Route(models.Model):
     route_name = models.CharField(max_length=30)
     driver_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    #polazak_iz za sad nek ostane prazno dok ne skontamo kako tanco radi google api
-    #dolazuk_u isto
+    startingLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2,), size=2,)
+    endLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2), size=2,)
     cigarette_allowed = models.BooleanField(blank=True)
     luggage_allowed = models.BooleanField(blank=True)
     create_at = models.DateField(auto_now_add=True)
@@ -18,7 +18,7 @@ class Route(models.Model):
         return self.route_name
 
     def Meta:
-        db_table = "Route"
+        db_table = "route"
 
 
 
@@ -33,7 +33,7 @@ class Request(models.Model):
         return self.profil.user.username + " request"
 
     def Meta:
-        db_table = "Request"
+        db_table = "request"
 
 
 
@@ -43,7 +43,7 @@ class Rating(models.Model):
     score = models.DecimalField(max_digits=5,decimal_places=2)
 
     def Meta:
-        db_table = "Rating"
+        db_table = "rating"
 
 # Create your models here.
 # SormazTest
