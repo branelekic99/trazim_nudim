@@ -1,9 +1,13 @@
 import React from "react";
+
 import Link from "./link.js";
 import Global from "../img/global.png";
 
 const Nav = () => {
+  
+
   return (
+    
     <>
       <nav className={"navbar navbar-expand-lg navbar-light bg-light"}>
         <Link className="navbar-brand" href={"/"}>
@@ -30,7 +34,7 @@ const Nav = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#">
+              <Link className="nav-link" href={"/create"}>
                 Kreiraj ponudu
               </Link>
             </li>
