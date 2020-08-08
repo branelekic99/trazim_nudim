@@ -2,11 +2,14 @@ from django.db import models
 from user_profile.models import Profile
 from django.contrib.postgres.fields import ArrayField
 
+
 class Route(models.Model):
     route_name = models.CharField(max_length=30)
-    driver_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    startingLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2,), size=2,)
-    endLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2), size=2,)
+    driver_profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    startingLocation = ArrayField(ArrayField(models.CharField(
+        max_length=20, blank=True, null=True), size=2,), size=2,)
+    endLocation = ArrayField(ArrayField(models.CharField(
+        max_length=20, blank=True, null=True), size=2), size=2,)
     cigarette_allowed = models.BooleanField(blank=True)
     luggage_allowed = models.BooleanField(blank=True)
     create_at = models.DateField(auto_now_add=True)
@@ -17,14 +20,13 @@ class Route(models.Model):
     def __str__(self):
         return self.route_name
 
-    def Meta:
+    class Meta:
         db_table = "route"
 
 
-
 class Request(models.Model):
-    route = models.ForeignKey(Route,on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    route = models.ForeignKey(Route, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     note = models.TextField(blank=True)
     seats_number = models.IntegerField()
     accepted = models.BooleanField(default=False)
@@ -32,21 +34,17 @@ class Request(models.Model):
     def __str__(self):
         return self.profil.user.username + " request"
 
-    def Meta:
+    class Meta:
         db_table = "request"
 
 
-
 class Rating(models.Model):
-    request = models.ForeignKey(Request,on_delete=models.DO_NOTHING)
+    request = models.ForeignKey(Request, on_delete=models.DO_NOTHING)
     note = models.TextField(blank=True)
-    score = models.DecimalField(max_digits=5,decimal_places=2)
+    score = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def Meta:
+    class Meta:
         db_table = "rating"
 
 # Create your models here.
 # SormazTest
-
-
- 

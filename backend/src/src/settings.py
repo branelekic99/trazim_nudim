@@ -55,10 +55,10 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-   'DEFAULT_AUTHENTICATION_CLASSES': (
-       'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-   ),
-   'DEFAULT_PERMISSION_CLASSES': ( 'rest_framework.permissions.IsAuthenticated', ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated', ),
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -107,7 +107,7 @@ ASGI_APPLICATION = "src.routing.application"
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-SOCIALACCOUNT_QUERY_EMAIL= True
+SOCIALACCOUNT_QUERY_EMAIL = True
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -115,18 +115,18 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'dev_travel',
-        'USER':'dbuser',
-        'PASSWORD':'dbuser123',
-        'HOST':'10.0.0.13',
-        'PORT':'5432',
         # 'ENGINE':'django.db.backends.postgresql_psycopg2',
-        # 'NAME':'postgres',
-        # 'USER':'postgres',
-        # 'HOST':'localhost',
+        # 'NAME':'dev_travel',
+        # 'USER':'dbuser',
+        # 'PASSWORD':'dbuser123',
+        # 'HOST':'10.0.0.13',
         # 'PORT':'5432',
-        # 'PASSWORD':'lampasto123'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'PASSWORD': 'slobo1234567',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PORT': 5433
     }
 }
 
@@ -181,5 +181,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
