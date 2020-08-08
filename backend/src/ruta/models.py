@@ -2,36 +2,48 @@ from django.db import models
 from user_profile.models import Profile
 from django.contrib.postgres.fields import ArrayField
 
-class Ruta(models.Model):
-    naziv_rute = models.CharField(max_length=30)
-    profil_vozaca = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    startingLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2,), size=2,)
-    endLocation = ArrayField(ArrayField(models.CharField(max_length=20, blank=True, null=True), size=2), size=2,)
-    cigarete_u_autu = models.BooleanField(blank=True)
-    dozvoljen_prtljak = models.BooleanField(blank=True)
-    datum_kreiranja = models.DateField(auto_now_add=True)
-    datum_i_vrijeme_polaska = models.DateField()
+class Route(models.Model):
+    route_name = models.CharField(max_length=30)
+    driver_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    #polazak_iz za sad nek ostane prazno dok ne skontamo kako tanco radi google api
+    #dolazuk_u isto
+    cigarette_allowed = models.BooleanField(blank=True)
+    luggage_allowed = models.BooleanField(blank=True)
+    create_at = models.DateField(auto_now_add=True)
+    departure = models.DateField()
     completed = models.BooleanField(default=False)
-    broj_slobodnih_mjesta = models.IntegerField()
+    empty_spots = models.IntegerField()
 
     def __str__(self):
-        return self.naziv_rute
+        return self.route_name
+
+    def Meta:
+        db_table = "Route"
+
+
 
 class Request(models.Model):
-    ruta = models.ForeignKey(Ruta,on_delete=models.CASCADE)
-    profil = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    tekst = models.TextField(blank=True)
-    broj_mjesta = models.IntegerField()
+    route = models.ForeignKey(Route,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    note = models.TextField(blank=True)
+    seats_number = models.IntegerField()
     accepted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.profil.user.username + " request"
 
+    def Meta:
+        db_table = "Request"
 
-class Ocjena(models.Model):
+
+
+class Rating(models.Model):
     request = models.ForeignKey(Request,on_delete=models.DO_NOTHING)
-    tekst = models.TextField(blank=True)
-    ocjena = models.DecimalField(max_digits=5,decimal_places=2)
+    note = models.TextField(blank=True)
+    score = models.DecimalField(max_digits=5,decimal_places=2)
+
+    def Meta:
+        db_table = "Rating"
 
 # Create your models here.
 # SormazTest
