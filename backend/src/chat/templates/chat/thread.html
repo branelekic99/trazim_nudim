@@ -11,6 +11,7 @@
 </ul>
 
 <form id='form' method='POST'> {% csrf_token %}
+    <input type="hidden" id="myUsername" value="{{ user.username }}">
     {{form.as_p }}
     <input type='submit' class='btn btn-primary' />
 </form>
@@ -18,37 +19,40 @@
 {% endblock %}
 
 {% block script %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js"></script>
 <script>
-    var loc = window.location
     var formData = $("#form")
-    var idMessage = $("#id_message")
-    var chat_items = $("#chat-items")
+    var msgInput = $("#id_message")
+    var chat_holder = $("#chat-items")
+    var me = $("#myUsername").val()
+
+    var loc = window.location
+ 
     var wsStart = 'ws://'
     if (loc.protocol == "https") {
         wsStart = 'wss://'
     }
     var endpoint = wsStart + loc.host + loc.pathname
     console.log(endpoint)
-    var socket = new WebSocket(endpoint)
+    
+    var socket = new ReconnectingWebSocket(endpoint)
+    
     socket.onmessage = function (e) {
         console.log("message", e)
-        var chatDataMessage = JSON.parse(e.data)
-        console.log(chatDataMessage)
-        chat_items.append("<li>" + chatDataMessage.msg + " via " + chatDataMessage.username + "</li>")
+        var chatDataMsg = JSON.parse(e.data)
+        chat_holder.append("<li>" + chatDataMsg.message + " via " + chatDataMsg.username +"</li>")
     }
     socket.onopen = function (e) {
-        formData.submit(function (event) {
-            //var formDataSerializer = formData.serialize()
-            //var msg = String(idMessage.val())
-            //chat_items.append("<li>" + chatDataMessage.message + " via " + chatDataMessage.username + "</li>")
-            //var finalData = {
-            //    "message": msg
-            //}
-            console.log(JSON.stringify(finalData))
+        console.log("open", e)
+        formData.submit(function(event){
             event.preventDefault()
-            //socket.send(JSON.stringify(finalData))
-            idMessage.val('')
+            var msgText = msgInput.val()
+            // chat_holder.append("<li>" + msgText + " via " + me +"</li>")
+            var finalData = {
+                "message": msgText
+            }
+            socket.send(JSON.stringify(finalData))
+            formData[0].reset()
         })
     }
     socket.onerror = function (e) {
@@ -62,3 +66,4 @@
 
 </script>
 {% endblock %}
+

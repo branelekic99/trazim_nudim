@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'chat',
     'user_profile',
     'ruta',
+    'channels'
 ]
 
 REST_FRAMEWORK = {
@@ -163,6 +164,17 @@ USE_L10N = True
 USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("127.0.0.1", 6379)],
+#             #"hosts": [os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')]
+
+#         },
+#     },
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
