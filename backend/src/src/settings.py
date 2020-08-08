@@ -122,11 +122,17 @@ DATABASES = {
         # 'HOST':'10.0.0.13',
         # 'PORT':'5432',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'trazimnudim',
-        'PASSWORD': 'slobo1234567',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'HOST': 'localhost',
-        'PORT': 5433
+        'PORT': '5432',
+        'PASSWORD': 'lampasto123'
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'trazimnudim',
+        # 'PASSWORD': 'slobo1234567',
+        # 'USER': 'postgres',
+        # 'HOST': 'localhost',
+        # 'PORT': 5433
     }
 }
 
