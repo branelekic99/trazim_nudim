@@ -121,18 +121,18 @@ DATABASES = {
         # 'PASSWORD':'dbuser123',
         # 'HOST':'10.0.0.13',
         # 'PORT':'5432',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'PASSWORD': 'lampasto123'
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'trazimnudim',
-        # 'PASSWORD': 'slobo1234567',
+        # 'NAME': 'postgres',
         # 'USER': 'postgres',
         # 'HOST': 'localhost',
-        # 'PORT': 5433
+        # 'PORT': '5432',
+        # 'PASSWORD': 'lampasto123'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'trazimnudim',
+        'PASSWORD': 'slobo1234567',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'PORT': 5433
     }
 }
 
@@ -171,16 +171,16 @@ USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#             #"hosts": [os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')]
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+            # "hosts": [os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')]
 
-#         },
-#     },
-# }
+        },
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
