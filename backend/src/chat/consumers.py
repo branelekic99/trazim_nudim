@@ -10,12 +10,20 @@ from .models import Thread, ChatMessage
 class ChatConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
         print('connected', event)
+
         other_user = self.scope['url_route']['kwargs']['username']
         me = self.scope['user']
-        print(other_user)
-        print(me)
         thread_obj = await self.get_thread(me, other_user)
-        print(thread_obj)
+        # print(other_user, me)
+        # print(thread_obj)
+        print(me, thread_obj.id)
+        chat_room = f"thread_{thread_obj.id}"
+        self.thread_obj = thread_obj
+        self.chat_room = chat_room
+        await self.channel_layer.group_add(
+            chat_room,
+            self.channel_name
+        )
         await self.send({
             "type": "websocket.accept",
         })
@@ -27,18 +35,30 @@ class ChatConsumer(AsyncConsumer):
             dict_loaded_data = json.loads(front_text)
             msg = dict_loaded_data.get('message')
             print(msg)
-            me = self.scope['user']
+            user = self.scope['user']
             username = 'default'
-            if me.is_authenticated:
-                username = me.username
+            if user.is_authenticated:
+                username = user.username
             myResponse = {
                 "message":  msg,
                 "username": username
             }
-            await self.send({
-                "type": "websocket.send",
-                "text": json.dumps(myResponse)
-            })
+            await self.create_chat_message(user, msg)
+            # broadcast message event to be send
+            await self.channel_layer.group_send(
+                self.chat_room,
+                {
+                    "type": "chat_message",
+                    "text": json.dumps(myResponse)
+                }
+            )
+
+    async def chat_message(self, event):
+        # sending message event
+        await self.send({
+            "type": "websocket.send",
+            "text": event['text']
+        })
 
     async def websocket_disconnect(self, event):
         print("disconect", event)
@@ -46,3 +66,9 @@ class ChatConsumer(AsyncConsumer):
     @database_sync_to_async
     def get_thread(self, user, other_username):
         return Thread.objects.get_or_new(user, other_username)[0]
+
+    @database_sync_to_async
+    def create_chat_message(self, me, msg):
+        thread_obj = self.thread_obj
+        me = self.scope['user']
+        return ChatMessage.objects.create(thread=thread_obj, user=me, message=msg)

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import FacebookLogin from 'react-facebook-login';
-import {fblogin} from '../actions'
+import {fblogin,loadUser} from '../actions'
 
 
 
@@ -17,12 +17,19 @@ function FbloginComp(){
                 fields="name,email,picture"
                 onClick={componentClicked}
                 callback={(response)=>{
-                    const obj = {
-                        'accessToken':response.accessToken,
-                        'profilePic':response.picture.data.url
-                    };
-                    disptach(fblogin(obj));
-                }}/>
+                    try{
+                        const obj = {
+                            'accessToken':response.accessToken,
+                            'profilePic':response.picture.data.url
+                        };
+                        disptach(fblogin(obj));
+                        disptach(loadUser());
+                }catch{
+                    
+                }
+                }}
+                redirectUri="/"
+                />
     )
 };
 
