@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>Thread for {% if user != object.first %}{{ object.first }}{% else %}{{ object.second }}{% endif %}</h3>
+<!-- <h3>Thread for {% if user != object.first %}{{ object.first }}{% else %}{{ object.second }}{% endif %}</h3> -->
 <ul id='chat-items'>
     {% for chat in object.chatmessage_set.all %}
 
-    <li>{{ chat.message }} via {{ chat.user }}</li>
+    <li>{{ chat.message }} --> <span style="font-size: small;">{{ chat.user }}</span></li>
 
     {% endfor %}
 </ul>
@@ -27,24 +27,24 @@
     var me = $("#myUsername").val()
 
     var loc = window.location
- 
+
     var wsStart = 'ws://'
     if (loc.protocol == "https") {
         wsStart = 'wss://'
     }
     var endpoint = wsStart + loc.host + loc.pathname
     console.log(endpoint)
-    
+
     var socket = new ReconnectingWebSocket(endpoint)
-    
+
     socket.onmessage = function (e) {
         console.log("message", e)
         var chatDataMsg = JSON.parse(e.data)
-        chat_holder.append("<li>" + chatDataMsg.message + " via " + chatDataMsg.username +"</li>")
+        chat_holder.append("<li>" + chatDataMsg.message + " --> " + "<span style='font - size: small;'>" + chatDataMsg.username + "</span>" + "</li>")
     }
     socket.onopen = function (e) {
         console.log("open", e)
-        formData.submit(function(event){
+        formData.submit(function (event) {
             event.preventDefault()
             var msgText = msgInput.val()
             // chat_holder.append("<li>" + msgText + " via " + me +"</li>")
@@ -66,4 +66,3 @@
 
 </script>
 {% endblock %}
-
