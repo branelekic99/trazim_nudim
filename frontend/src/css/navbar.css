@@ -53,9 +53,6 @@
   .sv-login-modal {
     top: 10% !important;
   }
-  .sv-login-modal .fa-facebook {
-    margin-left: 20%;
-  }
 }
 
 .bcg-image {
@@ -185,44 +182,28 @@ nav .navbar-collapse .navbar-nav .nav-item .nav-link .active::after {
   text-decoration: none;
 }
 
-.google-icon {
-  font-size: 25px;
-  color: #3b5998;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #fff;
-  margin-left: 100%;
-  -webkit-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+.fb {
+  background-color: #3B5998;
+  color: white;
 }
 
-.fa-facebook {
-  color: #3b5998;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 50px !important;
-  height: 43px;
-  border-radius: 50%;
-  background-color: #fff;
-  margin-left: 65%;
-  -webkit-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+.btn {
+  width: 100%;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  color: white;
+  text-decoration: none;
+}
+
+.google-button-login button {
+  width: 100%;
+}
+
+.google-button-login button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 /*# sourceMappingURL=navbar.css.map */

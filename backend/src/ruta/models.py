@@ -32,7 +32,7 @@ class Request(models.Model):
     accepted = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.profil.user.username + " request"
+        return self.profile.user.username + " request"
 
     class Meta:
         db_table = "request"

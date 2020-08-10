@@ -4,10 +4,7 @@ import Link from "./link.js";
 import Global from "../img/global.png";
 
 const Nav = () => {
-  
-
   return (
-    
     <>
       <nav className={"navbar navbar-expand-lg navbar-light bg-light"}>
         <Link className="navbar-brand" href={"/"}>
