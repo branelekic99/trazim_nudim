@@ -6,14 +6,14 @@ from django.contrib.postgres.fields import ArrayField
 class Route(models.Model):
     route_name = models.CharField(max_length=30)
     driver_profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    startingLocation = ArrayField(ArrayField(models.CharField(
-        max_length=20, blank=True, null=True), size=2,), size=2,)
-    endLocation = ArrayField(ArrayField(models.CharField(
-        max_length=20, blank=True, null=True), size=2), size=2,)
+    startingLocation = ArrayField(models.CharField(
+        max_length=20, blank=True, null=True), size=2,)
+    endLocation = ArrayField(models.CharField(
+        max_length=20, blank=True, null=True), size=2,)
     cigarette_allowed = models.BooleanField(blank=True)
     luggage_allowed = models.BooleanField(blank=True)
     create_at = models.DateField(auto_now_add=True)
-    departure = models.DateField()
+    departure = models.DateTimeField()
     completed = models.BooleanField(default=False)
     empty_spots = models.IntegerField()
 

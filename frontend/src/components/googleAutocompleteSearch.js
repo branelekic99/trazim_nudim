@@ -5,10 +5,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 
+
 function AutoSerach(props){
 
     const [address,setAddress] = useState("");
-    const [coordinates,setCoordinates]=useState({lat:null,lng:null});
 
     const handleSelect = async value => {
       const results = await geocodeByAddress(value);

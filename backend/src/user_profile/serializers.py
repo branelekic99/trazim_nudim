@@ -19,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return str(obj.user.email)
     class Meta:
         model = Profile
-        fields =["firstname","lastname","email","profile_pic","adresa",'broj_tell','goditste']
+        fields =['id','firstname','lastname','email','profile_pic','adddress','tel_number','age']
 
 
         

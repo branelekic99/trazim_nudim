@@ -1,8 +1,6 @@
 import React from "react";
-
-import Link from "./link.js";
 import Global from "../img/global.png";
-
+import {Link} from "react-router-dom";
 const Nav = () => {
   
 
@@ -10,7 +8,7 @@ const Nav = () => {
     
     <>
       <nav className={"navbar navbar-expand-lg navbar-light bg-light"}>
-        <Link className="navbar-brand" href={"/"}>
+        <Link className="navbar-brand" to="/">
           LOGO
         </Link>
 
@@ -29,17 +27,13 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto">
             <li className="nav-item">
-              <Link className="nav-link" href={"/offer"}>
-                Pogledaj ponude
-              </Link>
+              <Link className="nav-link" to='/offer'>Pogledaj ponude</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href={"/create"}>
-                Kreiraj ponudu
-              </Link>
+            <Link className="nav-link" to="/create">Kreiraj ponudu</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#">
+              <Link className="nav-link" to="/">
                 Pregled vozača
               </Link>
             </li>

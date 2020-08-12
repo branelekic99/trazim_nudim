@@ -1,6 +1,6 @@
 const initState ={
-    token:localStorage.getItem("authenticationToken"),
-    refreshToken:localStorage.getItem("authenticationRefreshToken"),
+    access_token:localStorage.getItem("access_token"),
+    refresh_token:localStorage.getItem("refresh_token"),
     isAuthenticated:false,
     socialMediaAvatar:'',
     user:null,
@@ -9,23 +9,25 @@ const initState ={
 const authReducer = (state=initState,action) =>{
     switch(action.type){
         case "LOGIN":
-            localStorage.setItem("authenticationToken",action.payload.access_token);
-            localStorage.setItem("authenticationRefreshToken",action.payload.refresh_token);
-            console.log(action.payload)
+            localStorage.setItem("access_token",action.payload.access_token);
+            localStorage.setItem("refresh_token",action.payload.refresh_token);
             return{
                 ...state,
+                ...action.payload,
                 isAuthenticated:true,
                 socialMediaAvatar:action.payload.avatar
             }
         case "SET_TOKEN":
-            localStorage.setItem("authenticationToken",action.payload);
+            localStorage.setItem("access_token",action.payload);
             return{
                 ...state,
+                ...action.payload,
                 isAuthenticated:true,
             }
         case "LOAD_USER":
             return{
                 ...state,
+                isAuthenticated:true,
                 user:action.payload
             }
         default:

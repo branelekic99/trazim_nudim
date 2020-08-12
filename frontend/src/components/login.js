@@ -1,7 +1,7 @@
 import React,{useEffect}from "react";
 import Bcg from "../img/bcg-traffic.jpg";
 import Googleimg from "../img/icons-google.png";
-import Link from "./link.js";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import GoogleLogin from './googleLogin';
@@ -9,22 +9,24 @@ import FacebookLogin from './facebookLogin';
 import {getToken,loadUser} from '../actions';
 import { useSelector, useDispatch } from "react-redux";
 import {Redirect} from 'react-router-dom';
-import AutoSearch from './googleAutocompleteSearch';
+
 
 
 const Login = (props) => {
   const isAuthenticated = useSelector(state=>state.auth.isAuthenticated);
   const dispatch = useDispatch();
-  
-  if(isAuthenticated){
-      return <Redirect to="/" />
-  }else{
+
+  useEffect(()=>{
     dispatch(getToken());
     dispatch(loadUser());
+  },[])
+
+  if(isAuthenticated){
+      return <Redirect to="/" />
   }
+  
   return (
     <>
-    {/* <AutoSearch/> */}
       <div className="bcg-image">
         <img src={Bcg} className="bcg-image" alt="Bcg" />
       </div>
@@ -53,7 +55,7 @@ const Login = (props) => {
               className="form-check-input"
               id="exampleCheck1"
             />
-            <label className="form-check-label" for="exampleCheck1">
+            <label className="form-check-label" htmlFor="exampleCheck1">
               Remember me
             </label>
           </div>
