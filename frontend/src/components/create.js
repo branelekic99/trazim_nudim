@@ -4,19 +4,13 @@ import {useSelector,useDispatch} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import DateFnsUtils from '@date-io/date-fns';
 import PlaceSearch from './googleAutocompleteSearch';
 import {useForm,Controller} from 'react-hook-form';
 import Map from './googleMap';
 import { withScriptjs } from "react-google-maps";
-import {loadUser} from '../actions';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardTimePicker,
-    KeyboardDatePicker,
-  } from '@material-ui/pickers';
 import { Redirect } from 'react-router';
-import { DateTimePicker, Picklist, PicklistOption } from 'react-rainbow-components';
+import { DateTimePicker} from 'react-rainbow-components';
+import {createRoute} from "../actions";
 
 
 function Create(){
@@ -27,14 +21,10 @@ function Create(){
     const [startLocation,setStartLocation] = useState({lat:null,lng:null});
     const [endLocation,setEndlocation] = useState({lat:null,lng:null});
     const driverProfile = useSelector(state=>state.auth.user);
-    const [initvlaue,setinitvalue] = useState(new Date('2020-10-25 10:44'))
  
     const MapLoader = withScriptjs(Map);
 
-    useEffect(()=>{
-        if(!isAuthenticated){dispatch(loadUser());}
-      },[])
-      
+
     if(!isAuthenticated){
         return <Redirect to="/login" />
     }
@@ -50,11 +40,14 @@ function Create(){
             endLocation:[endLocation.lat,endLocation.lng],
             cigarette_allowed:data.cigarette,
             luggage_allowed:data.bags,
+            departure:data.dateTime.toISOString(),
             empty_spots:data.seatAveilable
         }
-        console.log("OVO JE OBJ",obj);
-        console.log("ovo je data",data);
-    }
+       dispatch(createRoute(obj));
+    };
+    const pickerStyle ={
+        maxWidth:400,
+    };
     return(
         <div>
             <form onSubmit={handleSubmit(onSubmit)}> 
@@ -67,29 +60,25 @@ function Create(){
                     {errors.Dolazak && <p>This is required</p>}
                 </div>
                 <div>
-                <Controller as={DateTimePicker} control={control} margin="normal" 
-                    formatStyle="small"
-                    name='date-time'
-                    id="datetimepicker-1"
-                    label="Datum i vrijeme polaska"
-                    value={initvlaue}
-                    onChange={value => {
-                    // console.log(value.toISOString())
-                    setinitvalue(value)}
-                 }
-                    hour24
-                
-                />
+                    <Controller as={DateTimePicker} control={control} margin="normal" 
+                        formatStyle="small"
+                        name='dateTime'
+                        id="datetimepicker-1"
+                        label="Datum i vrijeme polaska"
+                        defaultValue={new Date()}
+                        hour24
+                        style={pickerStyle} //ovde ide style za ovaj picker
+                    />
                 </div>
                 <div>
                     <TextField inputRef={register({required:true})} name='seatAveilable' label="Broj mjesta" />
                     {errors.seatAveilable && <p>This is required</p>}
                 </div>
                 <div>
-                <FormControlLabel 
-                    control={ <Checkbox inputRef={register} name='cigarette' default={false} 
-                    />}
-                    label="Cigarete"/>
+                    <FormControlLabel 
+                        control={ <Checkbox inputRef={register} name='cigarette' default={false} 
+                        />}
+                        label="Cigarete"/>
                 </div>
                 <div>
                     <FormControlLabel 

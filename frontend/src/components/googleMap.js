@@ -4,8 +4,6 @@ import { withScriptjs,
     GoogleMap,
     DirectionsRenderer, } from "react-google-maps";
 
-  
-
 function Map(props){
   const [direction,setDirection] = useState(null);
 
