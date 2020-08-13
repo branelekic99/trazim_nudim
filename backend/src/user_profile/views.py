@@ -42,6 +42,3 @@ class GetUserTest(RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ProfileSerializer
 
-    
-
-# Create your views here.

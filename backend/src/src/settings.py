@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,7 +54,7 @@ INSTALLED_APPS = [
     'chat',
     'user_profile',
     'ruta',
-    'channels'
+    # 'channels'
 ]
 
 REST_FRAMEWORK = {
@@ -113,26 +116,12 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
-        # 'NAME':'dev_travel',
-        # 'USER':'dbuser',
-        # 'PASSWORD':'dbuser123',
-        # 'HOST':'10.0.0.13',
-        # 'PORT':'5432',
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgres',
-        # 'USER': 'postgres',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
-        # 'PASSWORD': 'lampasto123'
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'trazimnudim',
-        'PASSWORD': 'slobo1234567',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5433
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 

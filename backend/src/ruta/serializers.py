@@ -2,9 +2,8 @@ from rest_framework import serializers
 from .models import Route
 
 
-class RoutSerializer(serializers.ModelSerializer):
+class RoutetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Route
-        fields = ['naziv_rute', 'profil_vozaca', 'startingLocation',
-                  'endLocation', 'cigarete_u_autu', 'dozvoljen_prtljak',
-                  'datum_kreiranja', 'datum_i_vrijeme_polaska', 'completed', 'broj_slobodnih_mjesta']
+        fields = ['route_name','driver_profile','startingLocation','endLocation',
+        'cigarette_allowed','luggage_allowed','create_at','departure','completed','empty_spots']
