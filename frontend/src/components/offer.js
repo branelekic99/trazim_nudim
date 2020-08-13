@@ -1,10 +1,9 @@
 import React from "react";
-import AutoSerach from './googleAutocompleteSearch';
 
-function Offer(props) {
+
+function Offer() {
   return (
     <>
-    <AutoSerach />
       <div className="container mt-4">
         <div className="row m-0 m-auto">
           <div className="col-12 col-md-7 col-lg-7 mr-2 mb-2 sv-test">
@@ -17,11 +16,11 @@ function Offer(props) {
 
       <div className="container-fluid mt-4">
         <div className="row m-0 m-auto">
-          <div class="col-12 col-md-11 col-lg-11 m-0 m-auto sv-test"></div>
+          <div className="col-12 col-md-11 col-lg-11 m-0 m-auto sv-test"></div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Offer;

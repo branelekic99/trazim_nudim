@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Bcg from "../img/bcg-traffic.jpg";
 import Googleimg from "../img/icons-google.png";
-import Link from "./link.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import GoogleLogin from "./googleLogin";
@@ -27,7 +26,6 @@ const Login = (props) => {
       <div className="bcg-image">
         <img src={Bcg} className="bcg-image" alt="Bcg" />
       </div>
-
       <div className="sv-login-modal">
         <div className="row">
           <div className="col-12 text-center mb-3">
@@ -56,5 +54,4 @@ const Login = (props) => {
     </>
   );
 };
-
 export default Login;
