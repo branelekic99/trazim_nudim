@@ -24,7 +24,6 @@ export const loadUser =()=>{
     return function(dispatch,getState){
         const token = getState().auth.access_token;
         const header = "Bearer "+token;
-        console.log(header);
         axios.get("/get-profile/",{
             headers:{
                 "Content-Type":"aplication/json",
@@ -80,5 +79,46 @@ export const googleLogin=(data)=>{
             })
         })
         .catch(err=>console.log("ERROR KOD GOOGLE LOGIN"))
+    }
+};
+
+export const createRoute=(object)=>{
+    return function(dispatch,getState){
+
+        const token = getState().auth.access_token;
+        const header = "Bearer "+token;
+
+        axios.post("/route-create/",object,{
+            headers:{
+                "Authorization":header
+            }
+        })
+        .then(result=>console.log(result))
+        .catch(err=>console.log(err));
+    }
+};
+
+export const getDetailOfRoute=(id)=>{
+    return function(dispatch,getState){
+        
+        axios.get('/url/')
+        .then(result=>{
+            dispatch({
+                type:"",
+                payload:""
+            })
+        })
+    }
+};
+
+export const getListOfRouts=()=>{
+    return function(dispatch){
+        axios.get("/url/")
+        .then(result=>{
+            dispatch({
+                type:"",
+                payload:""
+            })
+        })
     }
 };
