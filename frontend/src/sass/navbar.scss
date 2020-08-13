@@ -116,10 +116,13 @@ nav {
     width: 100%;
 }
 
-.btn:hover {
-    opacity: 0.9;
-    color: white;
-    text-decoration: none;
+.btn-hover-facebook {
+
+    .btn:hover {
+        opacity: 0.9;
+        color: white;
+        text-decoration: none;
+    }
 }
 
 .google-button-login {

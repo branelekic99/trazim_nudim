@@ -36,7 +36,7 @@ const Login = (props) => {
         </div>
         <form>
           <div className="row">
-            <div className="col-md-12 col-lg-12 align-self-center mt-3 text-center">
+            <div className="col-md-12 col-lg-12 align-self-center mt-3 text-center btn-hover-facebook">
               <FacebookLogin />
               {/* <Link href="#">
                 <FontAwesomeIcon icon={faFacebook} />
