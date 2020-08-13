@@ -191,7 +191,7 @@ nav .navbar-collapse .navbar-nav .nav-item .nav-link .active::after {
   width: 100%;
 }
 
-.btn:hover {
+.btn-hover-facebook .btn:hover {
   opacity: 0.9;
   color: white;
   text-decoration: none;
