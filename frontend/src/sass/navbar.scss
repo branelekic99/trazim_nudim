@@ -106,34 +106,33 @@ nav {
     }
 }
 
-.google-icon {
-    font-size: 25px;
-    color: #3b5998;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #fff;
-    margin-left: 100%;
-    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
-  }
 
+.fb {
+    background-color: #3B5998;
+    color: white;
+}
 
-.fa-facebook {
-     color: #3b5998;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     width: 50px!important;
-     height: 43px;
-     border-radius: 50%;
-     background-color: #fff;
-     margin-left: 50%;
-     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
-  }
+.btn {
+    width: 100%;
+}
+
+.btn-hover-facebook {
+
+    .btn:hover {
+        opacity: 0.9;
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.google-button-login {
+    button {
+        width: 100%;
+    }
+
+    button:focus{
+        outline: none;
+        box-shadow: none;
+    }
+    
+}
