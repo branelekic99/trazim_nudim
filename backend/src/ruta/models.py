@@ -43,8 +43,11 @@ class Rating(models.Model):
     note = models.TextField(blank=True)
     score = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return self.request
+
     class Meta:
         db_table = "rating"
 
 # Create your models here.
-# SormazTest
+
