@@ -1,29 +1,28 @@
 from django.shortcuts import render
-from .serializers import RouteSerializer, RatingSerializer, RequestSerializer, RoutetSerializer
+from .serializers import RouteSerializer, RatingSerializer, RequestSerializer
 from rest_framework.generics import CreateAPIView,ListAPIView
 from .models import Route, Request, Rating
 from rest_framework import permissions
-from django.views.generic import ListView
 
 
-class RouteList(ListView):
-    model = Route
+class RouteList(ListAPIView):
+    queryset = Route.objects.all()
     serializer_class = RouteSerializer
+    permission_classes = [permissions.AllowAny,]
 
-
-class RequestList(ListView):
-    model = Request
+class RequestList(ListAPIView):
+    queryset = Request.objects.all()
     serializer_class = RatingSerializer
 
 
-class RatingList(ListView):
-    model = Rating
+class RatingList(ListAPIView):
+    queryset = Rating.objects.all()
     serializer_class = RequestSerializer
 
 
 class RouteCreateView(CreateAPIView):
     queryset = Route.objects.all()
-    serializer_class = RoutetSerializer
+    serializer_class = RouteSerializer
     permission_classes = [permissions.IsAuthenticated,]
 
 
