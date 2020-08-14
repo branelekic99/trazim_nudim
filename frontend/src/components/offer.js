@@ -1,7 +1,15 @@
-import React from "react";
-
+import React,{useEffect}from "react";
+import {getListOfRouts} from "../actions";
+import {useSelector,useDispatch} from 'react-redux';
 
 function Offer() {
+  const disptach = useDispatch();
+  const routes = useSelector(state=>state.route.routes);
+  useEffect(()=>{
+    disptach(getListOfRouts());
+  },[]);
+  
+
   return (
     <>
       <div className="container mt-4">

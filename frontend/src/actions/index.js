@@ -113,12 +113,14 @@ export const getDetailOfRoute=(id)=>{
 
 export const getListOfRouts=()=>{
     return function(dispatch){
-        axios.get("/url/")
+        axios.get("/route-list/")
         .then(result=>{
+            console.log(result);
             dispatch({
-                type:"",
-                payload:""
+                type:"ROUTE_LIST",
+                payload:result.data
             })
         })
+        .catch(err=>console.log(err));
     }
 };
