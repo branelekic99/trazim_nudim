@@ -90,12 +90,12 @@ function Create(){
                     <input type="submit" value="Submit" className="btn btn-outline-primary"/>
                 </div>
             </form>
-            {/* <MapLoader
+            <MapLoader
             origin={startLocation}
             destination={endLocation}
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzVvWVxhqlH_cf1bv4SNK_udydIje5wfA"
       loadingElement={<div style={{ height: `100%` }} />}
-    /> */}
+    />
         </div>
     )
 };

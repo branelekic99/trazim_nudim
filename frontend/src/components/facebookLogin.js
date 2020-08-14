@@ -9,7 +9,6 @@ function FbloginComp() {
   return (
     <FacebookLogin
       appId="3335188780040458"
-      autoLoad={true}
       fields="name,email,picture"
       icon="fa fa-facebook fa-fw"
       cssClass="fb btn"
@@ -21,7 +20,6 @@ function FbloginComp() {
             profilePic: response.picture.data.url,
           };
           disptach(fblogin(obj));
-          disptach(loadUser());
         } catch {}
       }}
       redirectUri="/"
