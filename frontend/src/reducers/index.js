@@ -1,10 +1,9 @@
-// ovde ide import novog reducera
-import testReducer from './test'
+import routeReducer from "./route";
 import {combineReducers} from 'redux';
 import authReducer from './auth';
 
 const allReducers = combineReducers({
-    test:testReducer,
+    route:routeReducer,
     auth:authReducer,
 });
 
