@@ -1,6 +1,7 @@
 import React from "react";
 import Global from "../img/global.png";
 import {Link} from "react-router-dom";
+
 const Nav = () => {
   return (
     <>

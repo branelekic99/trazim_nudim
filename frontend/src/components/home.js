@@ -7,12 +7,14 @@ import {Redirect} from 'react-router-dom';
 function Home(){
 
   const isAuthenticated = useSelector(state=>state.auth.isAuthenticated);
-  const user = useSelector(state=>state.auth.user)
+  const user = useSelector(state=>state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(()=>{
     dispatch(loadUser());
+    console.log(user)
   },[])
+  console.log(user)
     if(!isAuthenticated){
       return <Redirect to="/login" />
     }
