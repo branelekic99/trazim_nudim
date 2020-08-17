@@ -10,6 +10,7 @@ function routeDetial(props){
     return(
         <div>
             <div>
+                DETAIL 
                 {/* <MapLoader
                     origin={startLocation}
                     destination={endLocation}

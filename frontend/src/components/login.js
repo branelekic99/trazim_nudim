@@ -12,6 +12,7 @@ import AutoSearch from "./googleAutocompleteSearch";
 
 const Login = (props) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector(state=>state.auth.user)
   const dispatch = useDispatch();
 
   if (isAuthenticated) {
@@ -20,6 +21,7 @@ const Login = (props) => {
     dispatch(getToken());
     dispatch(loadUser());
   }
+  console.log(user)
   return (
     <>
       {/* <AutoSearch/> */}
