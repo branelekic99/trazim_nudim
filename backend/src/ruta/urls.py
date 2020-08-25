@@ -1,5 +1,6 @@
 from django.urls import path 
 from .views import (RouteCreateView,
+                    RouteUpdateView,
                     RouteList,
                     RequestList,
                     RatingList,)
@@ -9,4 +10,5 @@ urlpatterns = [
     path('route-list/',RouteList.as_view(), name = 'route'),
     path('request-list/',RequestList.as_view(), name = 'request'),
     path('rating-list/',RatingList.as_view(), name = 'rating'),
+    path('route-update/',RouteUpdateView.as_view(), name = 'update'),
 ]
