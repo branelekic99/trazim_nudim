@@ -5,7 +5,7 @@ from .models import Route, Request, Rating
 class RouteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Route
-        fields = ['route_name','driver_profile','startingLocation','endLocation',
+        fields = ['id','route_name','driver_profile','startingLocation','endLocation',
         'cigarette_allowed','luggage_allowed','create_at','departure','completed','empty_spots']
 
 class RequestSerializer(serializers.ModelSerializer):

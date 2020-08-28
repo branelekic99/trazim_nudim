@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from .serializers import RouteSerializer, RatingSerializer, RequestSerializer
-from rest_framework.generics import CreateAPIView,ListAPIView
+from rest_framework.generics import CreateAPIView,ListAPIView,UpdateAPIView
 from .models import Route, Request, Rating
 from rest_framework import permissions
+
 
 
 class RouteList(ListAPIView):
     queryset = Route.objects.all()
     serializer_class = RouteSerializer
     permission_classes = [permissions.AllowAny,]
+
 
 class RequestList(ListAPIView):
     queryset = Request.objects.all()
@@ -26,4 +28,7 @@ class RouteCreateView(CreateAPIView):
     permission_classes = [permissions.IsAuthenticated,]
 
 
-# Create your views here.
+class RouteUpdateView(UpdateAPIView):
+    queryset = Route.objects.all()
+    serializer_class = RouteSerializer
+    permission_classes = [permissions.AllowAny,]
