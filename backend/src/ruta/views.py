@@ -5,10 +5,12 @@ from .models import Route, Request, Rating
 from rest_framework import permissions
 
 
+
 class RouteList(ListAPIView):
     queryset = Route.objects.all()
     serializer_class = RouteSerializer
     permission_classes = [permissions.AllowAny,]
+
 
 class RequestList(ListAPIView):
     queryset = Request.objects.all()
@@ -25,10 +27,8 @@ class RouteCreateView(CreateAPIView):
     serializer_class = RouteSerializer
     permission_classes = [permissions.IsAuthenticated,]
 
+
 class RouteUpdateView(UpdateAPIView):
     queryset = Route.objects.all()
     serializer_class = RouteSerializer
-    permission_classes = (permissions.AllowAny,)
-
-
-# Create your views here.
+    permission_classes = [permissions.AllowAny,]
